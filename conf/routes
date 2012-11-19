@@ -7,3 +7,15 @@ GET     /                           controllers.Application.index()
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
+
+GET     /contentList/*content_idx						controllers.Application.contentList(content_idx)
+GET     /contentDetail/*content_idx						controllers.Application.contentDetail(content_idx)
+GET		/contentUpload/*user_idx/*title/*content		controllers.Application.contentUpload(user_idx, title, content)
+GET		/userLogin/*device_id							controllers.Application.userLogin(device_id)
+GET		/userInfo/*user_idx								controllers.Application.userInfo(user_idx)
+GET		/userUpdate/*user_idx/*device_id/*nickname		controllers.Application.userUpdate(user_idx, device_id, nickname)
+GET		/contentRecommand/*user_idx/*content_idx		controllers.Application.contentRecommand(user_idx, content_idx)
+GET     /replyList/*content_idx/*reply_idx				controllers.Application.replyList(content_idx, reply_idx)
+GET     /replyUpload/*user_idx/*content_idx/*content	controllers.Application.replyUpload(user_idx, content_idx, content)
+
+
