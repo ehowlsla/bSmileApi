@@ -24,7 +24,7 @@ public class ResContent {
 	
  	public char status;
 
- 	public long user_id;
+ 	public ResUser user;
 	
 	private final static int pSize = 10;
 	
@@ -38,6 +38,6 @@ public class ResContent {
 		this.replyCount = obj.replyCount;
 		this.image = obj.image;
 		this.status = obj.status;
-		this.user_id = obj.user.id;
+		this.user = new ResUser(obj.user);
 	}
 }
