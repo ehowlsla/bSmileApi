@@ -8,7 +8,7 @@ import models.User;
 public class ResReply {
 	
 	public long id;
-	public User user;
+	public ResUser user;
 	public long content_id;
 	public String replyContents;
 	public Date createDate;
@@ -17,7 +17,7 @@ public class ResReply {
 	public ResReply(Reply obj) {
 		// TODO Auto-generated constructor stub
 		this.id = obj.id;
-		this.user = obj.user;
+		this.user = new ResUser(obj.user);
 		this.content_id = obj.content_id;
 		this.replyContents = obj.replyContents;
 		this.createDate = obj.createDate;
