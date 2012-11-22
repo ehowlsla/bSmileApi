@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 
 import play.data.format.Formats;
 import play.db.ebean.Model;
@@ -16,8 +17,10 @@ public class Recommand extends Model {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	@ManyToOne
 	public String user_id;
 	 
+	@ManyToOne
 	public String content_id;
 	
 	@Formats.DateTime(pattern="yyyy-MM-dd HH:mm:ss")

@@ -15,11 +15,13 @@ public class ResUser {
 
 	public ResUser(User obj) {
 		// TODO Auto-generated constructor stub
-		this.id = obj.id;
-		this.nickname = obj.nickname;
-		this.udid = obj.udid;
-		this.image = obj.image;
-		this.status = obj.status;
-		this.createDate = obj.createDate;
+		if(obj != null) {
+			this.id = obj.id;
+			this.nickname = obj.nickname;
+			this.udid = obj.udid;
+			this.image = obj.image;
+			this.status = obj.status;
+			this.createDate = obj.createDate;
+		}
 	}
 }

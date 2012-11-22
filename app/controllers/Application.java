@@ -78,7 +78,9 @@ public class Application extends Controller {
   }
   
   public static Result replyUpload(String user_idx, String content_idx, String content) {
-	  Reply.upload(user_idx, content_idx, content);
+	  Reply temp = Reply.upload(user_idx, content_idx, content);
+	  if(temp == null) return ok();
+	  
 	  List<Reply> obj = Reply.getContentReplies(content_idx, "0");
 	  List<ResReply> result = new LinkedList<ResReply>();
 	  for (Reply reply : obj) {

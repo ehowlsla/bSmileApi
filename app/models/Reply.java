@@ -23,6 +23,7 @@ public class Reply extends Model {
 	@Id
 	public long id;
 	
+	@ManyToOne
 	public User user;
 	
 	public long content_id;
@@ -53,7 +54,7 @@ public class Reply extends Model {
 	
 	public static List<Reply> getContentReplies (String content_idx, String reply_idx) {
 		if("0".equals(reply_idx))
-			return find.where().eq("content_id", Long.parseLong(content_idx)).eq("status", "Y").orderBy("create_date asc").findPagingList(rSize).getPage(0).getList();
+			return find.where().eq("content_id", Long.parseLong(content_idx)).eq("status", "Y").orderBy("id asc").findPagingList(rSize).getPage(0).getList();
 		else
 			return find.where().eq("content_id", Long.parseLong(content_idx)).gt("id", reply_idx).eq("status", "Y").orderBy("id asc").findPagingList(rSize).getPage(0).getList();
 	}
@@ -71,6 +72,8 @@ public class Reply extends Model {
 //		if(Reply.getContentReplyByContent(user_idx, udid, content_idx, content) == null)
 		{
 			User user = User.getUserInfo(user_idx);
+			if(user == null) return null;
+			
 			Content contents = Content.getContentDetail(content_idx);
 			int replyCount = contents.replyCount;
 			contents.replyCount = replyCount + 1;
