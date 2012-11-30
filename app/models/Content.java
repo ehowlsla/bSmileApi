@@ -70,6 +70,13 @@ public static Finder<Long,Content> find = new Finder<Long,Content>(Long.class, C
 			return find.where().eq("status", "Y").lt("id", Integer.valueOf(content_idx)).orderBy("id desc").findPagingList(pSize).getPage(0).getList();
 	}
 	
+	public static Content deleteContent(String user_idx, String content_idx) {
+		Content content = find.where().eq("user_id", user_idx).eq("id", content_idx).findUnique();
+		content.status = 'N';
+		content.save();
+		return content;
+	}
+	
 
 	public static Content getContentDetail (String content_idx) {
 		return find.where().eq("status", "Y").eq("id", Long.valueOf(content_idx)).findUnique();

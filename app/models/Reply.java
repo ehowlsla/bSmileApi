@@ -84,4 +84,11 @@ public class Reply extends Model {
 		}
 		return reply;
 	}
+	
+	public static Reply deleteReply(String user_idx, String reply_idx) {
+		Reply reply = find.where().eq("user_id", user_idx).eq("id", reply_idx).findUnique();
+		reply.status = 'N';
+		reply.save();
+		return reply;
+	}
 }

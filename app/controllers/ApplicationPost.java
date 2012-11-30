@@ -159,6 +159,20 @@ public class ApplicationPost extends Controller{
 		  return ok(new Gson().toJson(result));
 	  }
 	  
+	  public static Result deleteContent() {
+		  Map<String, String[]> params = request().body().asFormUrlEncoded();
+		  String user_idx = params.get("user_idx")[0];
+		  String content_idx = params.get("content_idx")[0];
+		  return ok(new Gson().toJson(new ResContent(Content.deleteContent(user_idx, content_idx))));
+	  }
+	  
+	  public static Result deleteReply() {
+		  Map<String, String[]> params = request().body().asFormUrlEncoded();
+		  String user_idx = params.get("user_idx")[0];
+		  String reply_idx = params.get("reply_idx")[0];
+		  return ok(new Gson().toJson(new ResReply(Reply.deleteReply(user_idx, reply_idx))));
+	  }
+	  
 	  private static final int TYPE_CONTENT = 1;
 	  private static final int TYPE_PROFILE = 2;
 	  

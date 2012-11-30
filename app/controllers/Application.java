@@ -19,6 +19,11 @@ import resModels.ResUser;
 import views.html.index;
 
 public class Application extends Controller {
+	
+	public static Result connect() {
+		
+		return ok();
+	}
   
   public static Result index() {
     return ok(index.render("Your new application is ready."));
@@ -87,6 +92,14 @@ public class Application extends Controller {
 		  result.add(new ResReply(reply));
 	  }
 	  return ok(new Gson().toJson(result));
+  }
+  
+  public static Result deleteContent(String user_idx, String content_idx) {
+	  return ok(new Gson().toJson(new ResContent(Content.deleteContent(user_idx, content_idx))));
+  }
+  
+  public static Result deleteReply(String user_idx, String reply_idx) {
+	  return ok(new Gson().toJson(new ResReply(Reply.deleteReply(user_idx, reply_idx))));
   }
 }
 
