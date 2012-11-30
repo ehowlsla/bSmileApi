@@ -214,4 +214,25 @@ public class ApplicationPost extends Controller{
 			
 			return imageURL;
 	  }
+	  
+	  public static Result contentListBySort() {
+		  Map<String, String[]> params = request().body().asFormUrlEncoded();
+		  String content_idx = params.get("content_idx")[0];
+		  String sortType = params.get("sortType")[0];
+		  
+		  //1 - 추천순 정렬 
+		  //2 - 댓글순 정렬 
+		  // 그 외 최신순
+		  List<Content> data = null;
+		  
+		  if("1".equals(sortType)) data = Content.getContentListBySortRec(content_idx);
+		  else if("2".equals(sortType)) data = Content.getContentListBySortRep(content_idx);
+		  else data = Content.getContentList(content_idx);
+		  
+			List<ResContent> result = new LinkedList<ResContent>();
+			for (Content model : data) {
+				result.add(new ResContent(model));
+			}
+			return ok(new Gson().toJson(result));
+	  }
 }

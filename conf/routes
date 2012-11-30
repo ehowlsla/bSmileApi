@@ -20,6 +20,7 @@ POST	/replyUpload              						controllers.ApplicationPost.replyUpload()
 
 POST     /deleteContent									controllers.ApplicationPost.deleteContent()
 POST     /deleteReply									controllers.ApplicationPost.deleteReply()
+POST     /contentListBySort								controllers.ApplicationPost.contentListBySort()
 
 GET     /contentList/*content_idx						controllers.Application.contentList(content_idx)
 GET     /contentDetail/*content_idx						controllers.Application.contentDetail(content_idx)
@@ -33,5 +34,6 @@ GET     /replyUpload/*user_idx/*content_idx/*content	controllers.Application.rep
 
 GET     /deleteContent/*user_idx/*content_idx			controllers.Application.deleteContent(user_idx, content_idx)
 GET     /deleteReply/*user_idx/*reply_idx				controllers.Application.deleteReply(user_idx, reply_idx)
+GET     /contentListBySort/*content_idx/*sortType				controllers.Application.deleteReply(content_idx, sortType)
 
 

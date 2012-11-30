@@ -70,6 +70,20 @@ public static Finder<Long,Content> find = new Finder<Long,Content>(Long.class, C
 			return find.where().eq("status", "Y").lt("id", Integer.valueOf(content_idx)).orderBy("id desc").findPagingList(pSize).getPage(0).getList();
 	}
 	
+	public static List<Content> getContentListBySortRec  (String content_idx) {
+		if(content_idx.equals("0"))
+			return find.where().eq("status", "Y").orderBy("recCount desc").findPagingList(pSize).getPage(0).getList();
+		else
+			return find.where().eq("status", "Y").lt("id", Integer.valueOf(content_idx)).orderBy("recCount desc").findPagingList(pSize).getPage(0).getList();
+	}
+	
+	public static List<Content> getContentListBySortRep  (String content_idx) {
+		if(content_idx.equals("0"))
+			return find.where().eq("status", "Y").orderBy("replyCount desc").findPagingList(pSize).getPage(0).getList();
+		else
+			return find.where().eq("status", "Y").lt("id", Integer.valueOf(content_idx)).orderBy("replyCount desc").findPagingList(pSize).getPage(0).getList();
+	}
+	
 	public static Content deleteContent(String user_idx, String content_idx) {
 		Content content = find.where().eq("user_id", user_idx).eq("id", content_idx).findUnique();
 		content.status = 'N';

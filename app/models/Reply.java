@@ -59,6 +59,7 @@ public class Reply extends Model {
 			return find.where().eq("content_id", Long.parseLong(content_idx)).gt("id", reply_idx).eq("status", "Y").orderBy("id asc").findPagingList(rSize).getPage(0).getList();
 	}
 
+	
 //	public static Reply getContentReplyByContent (String user_idx, String udid, String content_idx, String content) {
 //		return find.where().eq("user_id", Long.valueOf(user_idx)).eq("content_id", Long.valueOf(content_idx)).eq("reply_contents", content).eq("status", "Y").findUnique();
 //	}

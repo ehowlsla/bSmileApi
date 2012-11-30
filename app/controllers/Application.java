@@ -38,6 +38,23 @@ public class Application extends Controller {
 		return ok(new Gson().toJson(result));
   }
   
+  public static Result contentListBySort(String content_idx, String sortType) {
+	  //1 - 추천순 정렬 
+	  //2 - 댓글순 정렬 
+	  //3 - 그 외 최신순
+	  List<Content> data = null;
+	  
+	  if("1".equals(sortType)) data = Content.getContentListBySortRec(content_idx);
+	  else if("2".equals(sortType)) data = Content.getContentListBySortRep(content_idx);
+	  else data = Content.getContentList(content_idx);
+	  
+		List<ResContent> result = new LinkedList<ResContent>();
+		for (Content model : data) {
+			result.add(new ResContent(model));
+		}
+		return ok(new Gson().toJson(result));
+  }
+  
   public static Result contentDetail(String content_idx) {
 	  Content obj = Content.getContentDetail(content_idx);
 	  return ok(new Gson().toJson(new ResContent(obj)));
