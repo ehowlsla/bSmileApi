@@ -18,6 +18,9 @@ POST	/contentRecommand              						controllers.ApplicationPost.contentRec
 POST	/replyList              						controllers.ApplicationPost.replyList()
 POST	/replyUpload              						controllers.ApplicationPost.replyUpload()
 
+POST     /deleteContent									controllers.ApplicationPost.deleteContent()
+POST     /deleteReply									controllers.ApplicationPost.deleteReply()
+
 GET     /contentList/*content_idx						controllers.Application.contentList(content_idx)
 GET     /contentDetail/*content_idx						controllers.Application.contentDetail(content_idx)
 GET		/contentUpload/*user_idx/*title/*content		controllers.Application.contentUpload(user_idx, title, content)
@@ -27,5 +30,8 @@ GET		/userUpdate/*user_idx/*device_id/*nickname		controllers.Application.userUpd
 GET		/contentRecommand/*user_idx/*content_idx		controllers.Application.contentRecommand(user_idx, content_idx)
 GET     /replyList/*content_idx/*reply_idx				controllers.Application.replyList(content_idx, reply_idx)
 GET     /replyUpload/*user_idx/*content_idx/*content	controllers.Application.replyUpload(user_idx, content_idx, content)
+
+GET     /deleteContent/*user_idx/*content_idx			controllers.Application.deleteContent(user_idx, content_idx)
+GET     /deleteReply/*user_idx/*reply_idx				controllers.Application.deleteReply(user_idx, reply_idx)
 
 
