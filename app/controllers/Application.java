@@ -1,5 +1,6 @@
 package controllers;
 
+import java.io.File;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -117,6 +118,10 @@ public class Application extends Controller {
   
   public static Result deleteReply(String user_idx, String reply_idx) {
 	  return ok(new Gson().toJson(new ResReply(Reply.deleteReply(user_idx, reply_idx))));
+  }
+  
+  public static Result getImage(String path) {
+		return ok(new File("/root/taesupProj/bSmileApi/" + path));
   }
 }
 

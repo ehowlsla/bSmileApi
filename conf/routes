@@ -36,4 +36,5 @@ GET     /deleteContent/*user_idx/*content_idx			controllers.Application.deleteCo
 GET     /deleteReply/*user_idx/*reply_idx				controllers.Application.deleteReply(user_idx, reply_idx)
 GET     /contentListBySort/*content_idx/*sortType				controllers.Application.deleteReply(content_idx, sortType)
 
+GET     /getImage/*path				controllers.Application.getImage(path)
 

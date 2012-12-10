@@ -61,21 +61,22 @@ public class ApplicationPost extends Controller{
 		  if (request().body().asMultipartFormData() != null) {
 			  params = request().body()
 						.asMultipartFormData().asFormUrlEncoded();
+		  
+		  
+			  String user_idx = params.get("user_idx")[0];
+			  String title = params.get("title")[0];
+			  String content = params.get("content")[0];
+			  
+			  String image = "";
+			  
+			  if (request().body().asMultipartFormData() != null) {
+				  image = imageUpload(request().body().asMultipartFormData().getFiles(), user_idx, TYPE_CONTENT);
+			  }
+			  
+			  Content obj = Content.upload(user_idx, title, content, image);
+			  return ok(new Gson().toJson(new ResContent(obj)));
 		  }
-		  
-		  String user_idx = params.get("user_idx")[0];
-		  String title = params.get("title")[0];
-		  String content = params.get("content")[0];
-		  
-		  String image = "";
-		  
-		  if (request().body().asMultipartFormData() != null) {
-			  image = imageUpload(request().body().asMultipartFormData().getFiles(), user_idx, TYPE_CONTENT);
-		  }
-		  
-		  Content obj = Content.upload(user_idx, title, content, image);
-		  return ok(new Gson().toJson(new ResContent(obj)));
-//		  return ok("");
+		  	  return ok("");
 	  }
 	  
 	  public static Result userLogin() {
