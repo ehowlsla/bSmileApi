@@ -59,4 +59,22 @@ public class Recommand extends Model {
 			return null;
 		}
 	}
+	
+	public static Recommand deleteRecommand (String user_id, String content_id) {
+		Recommand recommands = Recommand.getRecommand(user_id, content_id);
+		if(recommands == null) {
+			recommands = new Recommand(user_id, content_id);
+			recommands.save();
+			
+			Content contents = Content.getContentDetail(content_id);
+			int recCount = contents.recCount;
+			if(recCount > 0)
+				contents.recCount = recCount - 1;
+			contents.update();
+			
+			return recommands;
+		} else {
+			return null;
+		}
+	}
 }

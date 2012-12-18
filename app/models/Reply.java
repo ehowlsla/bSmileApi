@@ -90,6 +90,9 @@ public class Reply extends Model {
 		Reply reply = find.where().eq("user_id", user_idx).eq("id", reply_idx).findUnique();
 		reply.status = 'N';
 		reply.save();
+		
+		Recommand.deleteRecommand(user_idx, String.valueOf(reply.content_id));
+		
 		return reply;
 	}
 }

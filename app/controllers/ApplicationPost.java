@@ -202,7 +202,7 @@ public class ApplicationPost extends Controller{
 						is = new FileInputStream(file);
 						IOUtils.copy(is, new FileOutputStream(saveFile));
 						ThumbnailGenerator generator = new ThumbnailGenerator();
-						generator.transform(imageURL, s_imageURL, 320, 320, 1);
+						generator.transform(imageURL, s_imageURL, 120, 120, 1);
 					} catch (FileNotFoundException e) { 
 						e.printStackTrace();
 					} catch (IOException e) { 
