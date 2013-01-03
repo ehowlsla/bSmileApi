@@ -91,6 +91,13 @@ public class Reply extends Model {
 		reply.status = 'N';
 		reply.save();
 		
+		Content contents = Content.getContentDetail(String.valueOf(reply.content_id));
+		int replyCount = contents.replyCount;
+		if(replyCount > 0) {
+			contents.replyCount = replyCount - 1;
+			contents.update();
+		}
+		
 		Recommand.deleteRecommand(user_idx, String.valueOf(reply.content_id));
 		
 		return reply;
